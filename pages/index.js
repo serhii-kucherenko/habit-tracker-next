@@ -1,11 +1,24 @@
 import DefaultLayout from "../layouts/Default";
+import withApollo from "lib/apollo";
+import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
 
-export default function Home() {
+const HELLO_QUERY = gql`
+  query {
+    sayHello
+  }
+`;
+
+const Home = () => {
+  const { data, loading, error } = useQuery(HELLO_QUERY);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <DefaultLayout>
-      <h1 className="title">
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+      <h1 className="title">{data.sayHello}</h1>
 
       <p className="description">
         Get started by editing <code>pages/index.js</code>
@@ -60,4 +73,6 @@ export default function Home() {
       `}</style>
     </DefaultLayout>
   );
-}
+};
+
+export default withApollo(Home);
