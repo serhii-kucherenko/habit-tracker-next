@@ -1,17 +1,45 @@
-import React from "react";
+import gql from "graphql-tag";
+import { useMutation } from "@apollo/react-hooks";
 import { Form, Field } from "@leveluptuts/fresh";
 
-const HabitForm = ({ setHabits }) => {
-  return (
-    <Form
-      onSubmit={({ habit }) => {
-        if (!habit) return alert("Provide a Habit name");
+const ADD_HABIT = gql`
+  mutation addHabit($habit: HabitInput) {
+    addHabit(habit: $habit) {
+      _id
+      name
+    }
+  }
+`;
 
-        setHabits((prevState) => [...prevState, habit]);
-      }}
-    >
-      <Field>Habit</Field>
-    </Form>
+const HabitForm = () => {
+  const [addHabit, { loading, error }] = useMutation(ADD_HABIT);
+
+  return (
+    <div className="form">
+      <Form
+        onSubmit={({ habit }) => {
+          if (!habit) return alert("Provide a Habit name");
+
+          addHabit({
+            variables: {
+              habit: {
+                name: habit,
+              },
+            },
+          });
+        }}
+      >
+        <Field>Habit</Field>
+      </Form>
+
+      {error && <div className="error">{error.message}</div>}
+
+      <style jsx>{`
+        .error {
+          color: darkred;
+        }
+      `}</style>
+    </div>
   );
 };
 
