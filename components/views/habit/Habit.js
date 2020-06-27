@@ -1,4 +1,4 @@
-import StateButton from "components/ui/StateButton";
+import HabitButton from "./HabitButton";
 
 const colors = ["#718096", "#F56565", "#F6E05E", "#68D391", "#63B3ED"];
 
@@ -10,7 +10,7 @@ const Habit = ({ habit, index }) => {
       <h3>{habit.name}</h3>
       <div className="buttons">
         {dates.map((date) => (
-          <StateButton key={date.getTime()} date={date} />
+          <HabitButton key={date.getTime()} date={date} />
         ))}
       </div>
 

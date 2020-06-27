@@ -9,5 +9,21 @@ export const habitsMutations = {
         console.error(ex);
       }
     },
+
+    async addEvent(_, { habitId, date }) {
+      try {
+        // return await Habits.findByIdAndUpdate(habitId);
+      } catch (ex) {
+        console.error(ex);
+      }
+    },
+
+    async removeEvent(_, { habitId, eventId }) {
+      try {
+        // return await Habits.create(habit);
+      } catch (ex) {
+        console.error(ex);
+      }
+    },
   },
 };

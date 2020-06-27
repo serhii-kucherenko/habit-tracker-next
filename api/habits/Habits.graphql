@@ -1,6 +1,13 @@
+scalar Date
+
 type Habit {
   _id: ID!
   name: String!
+}
+
+type Event {
+  _id: ID!
+  date: Date
 }
 
 input HabitInput {
@@ -10,6 +17,8 @@ input HabitInput {
 
 type Mutation {
   addHabit(habit: HabitInput): Habit
+  addEvent(habitId: ID, date: Date): Habit
+  removeEvent(habitId: ID, eventId: ID): Habit
 }
 
 type Query {

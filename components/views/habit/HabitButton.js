@@ -1,14 +1,40 @@
-import { useState } from "react";
+import gql from "graphql-tag";
+import { useMutation } from "@apollo/react-hooks";
+
+const ADD_EVENT = gql`
+  query addEvent($habitId: ID, $date: Date) {
+    addEvent(habidId: $habidId, date: $date) {
+      _id,
+      name,
+      events: {
+        _id,
+        date
+      }
+    }
+  }
+`;
+
+const REMOVE_EVENT = gql`
+  query removeEvent($habitId: ID, $eventID: ID) {
+    removeEvent(habidId: $habidId, eventID: $eventID) {
+      _id,
+      name,
+      events: {
+        _id,
+        date
+      }
+    }
+  }
+`;
 
 const StateButton = ({ date }) => {
-  const [completed, setCompleted] = useState(false);
+  const [addEvent] = useMutation(ADD_EVENT);
+  const [removeEvent] = useMutation(REMOVE_EVENT);
 
   return (
     <span>
       {date.getMonth() + 1}/{date.getDate()}
-      <button onClick={() => setCompleted(!completed)}>
-        {completed ? "X" : "O"}
-      </button>
+      <button onClick={() => {}}>// {completed ? "X" : "O"}</button>
       <style jsx>{`
         span {
           display: flex;
