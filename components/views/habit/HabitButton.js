@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 
 const ADD_EVENT = gql`
-  query addEvent($habitId: ID, $date: Date) {
+  mutation addEvent($habitId: ID, $date: Date) {
     addEvent(habidId: $habidId, date: $date) {
       _id,
       name,
@@ -15,7 +15,7 @@ const ADD_EVENT = gql`
 `;
 
 const REMOVE_EVENT = gql`
-  query removeEvent($habitId: ID, $eventID: ID) {
+  mutation removeEvent($habitId: ID, $eventID: ID) {
     removeEvent(habidId: $habidId, eventID: $eventID) {
       _id,
       name,
