@@ -1,8 +1,10 @@
+import { useState } from "react";
+import { useQuery } from "@apollo/react-hooks";
 import DefaultLayout from "../layouts/Default";
 import withApollo from "lib/apollo";
 import gql from "graphql-tag";
-import { useQuery } from "@apollo/react-hooks";
 import HabitsList from "../components/views/habit/HabitList";
+import HabitForm from "../components/views/habit/HabitForm";
 
 const HELLO_QUERY = gql`
   query {
@@ -11,6 +13,7 @@ const HELLO_QUERY = gql`
 `;
 
 const Home = () => {
+  const [habits, setHabits] = useState(["Reading"]);
   const { data, loading, error } = useQuery(HELLO_QUERY);
 
   if (loading) {
@@ -20,8 +23,10 @@ const Home = () => {
   return (
     <DefaultLayout>
       <h1 className="title">Track Your Life</h1>
-
-      <HabitsList />
+      <div className="list">
+        <HabitForm setHabits={setHabits} />
+        <HabitsList habits={habits} />
+      </div>
 
       <style jsx>{`
         .container {
@@ -40,6 +45,12 @@ const Home = () => {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+        }
+
+        .list {
+          width: 100%;
+          max-width: 600px;
+          margin: 32px auto;
         }
       `}</style>
     </DefaultLayout>

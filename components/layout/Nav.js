@@ -16,9 +16,15 @@ const Nav = () => {
 
       <style jsx>{`
         .nav {
+          position: fixed;
+          width: 100%;
           display: flex;
           justify-content: center;
-          padding: 0;
+          margin: 0;
+          padding: 12px 0;
+          box-shadow: 0 4px 4px 0 rgba(5, 5, 5, 0.2);
+          background: #fff;
+          z-index: 3;
         }
 
         .nav li {
@@ -31,7 +37,7 @@ const Nav = () => {
         }
 
         .nav li a {
-          padding: 1.5rem;
+          padding: 0.75rem 1.5rem;
           width: 100%;
         }
 

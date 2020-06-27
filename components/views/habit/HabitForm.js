@@ -1,10 +1,18 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Form, Field } from "@leveluptuts/fresh";
 
-export default function HabitForm() {
+const HabitForm = ({ setHabits }) => {
   return (
-    <View>
-      <Text></Text>
-    </View>
+    <Form
+      onSubmit={({ habit }) => {
+        if (!habit) return alert("Provide a Habit name");
+
+        setHabits((prevState) => [...prevState, habit]);
+      }}
+    >
+      <Field>Habit</Field>
+    </Form>
   );
-}
+};
+
+export default HabitForm;

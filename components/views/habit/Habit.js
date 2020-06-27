@@ -1,18 +1,48 @@
-const { default: StateButton } = require("../../ui/StateButton");
+import StateButton from "components/ui/StateButton";
 
-const Habit = () => {
+const colors = ["#718096", "#F56565", "#F6E05E", "#68D391", "#63B3ED"];
+
+const Habit = ({ habit, index }) => {
+  const dates = getLast5Days();
+
   return (
     <article>
-      <h2>Habit 1</h2>
-      <StateButton />
-      <StateButton />
-      <StateButton />
-      <StateButton />
-      <StateButton />
-      <StateButton />
-      <StateButton />
+      <h3>{habit}</h3>
+      <div className="buttons">
+        {dates.map((date) => (
+          <StateButton key={date.getTime()} date={date} />
+        ))}
+      </div>
+
+      <style jsx>{`
+        article {
+          padding: 20px;
+          border-radius: 15px;
+          box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+          margin-bottom: 16px;
+        }
+
+        h3 {
+          margin-top: 0;
+          border-bottom: solid 4px ${colors[index % 4]};
+        }
+
+        .buttons {
+          display: flex;
+        }
+      `}</style>
     </article>
   );
+};
+
+const getLast5Days = () => {
+  const dates = "01234".split("").map((day) => {
+    const tempDate = new Date();
+    tempDate.setDate(tempDate.getDate() - day);
+    return tempDate;
+  });
+
+  return dates;
 };
 
 export default Habit;

@@ -18,7 +18,7 @@ const DefaultLayout = ({ children }) => {
 
       <style jsx>{`
         main {
-          padding: 5rem 0;
+          padding: 6rem 0 1rem 0;
           flex: 1;
           display: flex;
           flex-direction: column;
