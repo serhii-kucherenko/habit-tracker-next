@@ -6,15 +6,15 @@ import gql from "graphql-tag";
 import HabitsList from "../components/views/habit/HabitList";
 import HabitForm from "../components/views/habit/HabitForm";
 
-const HELLO_QUERY = gql`
+const WELCOME_QUERY = gql`
   query {
-    sayHello
+    welcome
   }
 `;
 
 const Home = () => {
   const [habits, setHabits] = useState(["Reading"]);
-  const { data, loading, error } = useQuery(HELLO_QUERY);
+  const { data, loading, error } = useQuery(WELCOME_QUERY);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -48,7 +48,6 @@ const Home = () => {
         }
 
         .list {
-          width: 100%;
           max-width: 600px;
           margin: 32px auto;
         }

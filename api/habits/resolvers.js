@@ -1,5 +1,5 @@
-export const habitResolvers = {
-  Resolver: {
+export const habitsResolvers = {
+  Query: {
     async habits() {
       console.log("Get habits");
       return [
