@@ -7,7 +7,7 @@ const Habit = ({ habit, index }) => {
 
   return (
     <article>
-      <h3>{habit}</h3>
+      <h3>{habit.name}</h3>
       <div className="buttons">
         {dates.map((date) => (
           <StateButton key={date.getTime()} date={date} />

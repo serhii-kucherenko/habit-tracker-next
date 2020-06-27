@@ -5,7 +5,7 @@ export const habitsResolvers = {
       return [
         {
           _id: "32374876543",
-          name: "Habit from DB",
+          name: "Meditate",
         },
       ];
     },
