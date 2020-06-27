@@ -4,10 +4,10 @@ import { useMutation } from "@apollo/react-hooks";
 const ADD_EVENT = gql`
   mutation addEvent($habitId: ID, $date: Date) {
     addEvent(habidId: $habidId, date: $date) {
-      _id,
-      name,
-      events: {
-        _id,
+      _id
+      name
+      events {
+        _id
         date
       }
     }
@@ -17,10 +17,10 @@ const ADD_EVENT = gql`
 const REMOVE_EVENT = gql`
   mutation removeEvent($habitId: ID, $eventID: ID) {
     removeEvent(habidId: $habidId, eventID: $eventID) {
-      _id,
-      name,
-      events: {
-        _id,
+      _id
+      name
+      events {
+        _id
         date
       }
     }
