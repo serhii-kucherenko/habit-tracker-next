@@ -34,7 +34,7 @@ const StateButton = ({ date }) => {
   return (
     <span>
       {date.getMonth() + 1}/{date.getDate()}
-      <button onClick={() => {}}>// {completed ? "X" : "O"}</button>
+      {/* <button onClick={() => {}}>{completed ? "X" : "O"}</button> */}
       <style jsx>{`
         span {
           display: flex;
