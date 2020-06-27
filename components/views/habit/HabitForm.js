@@ -12,7 +12,9 @@ const ADD_HABIT = gql`
 `;
 
 const HabitForm = () => {
-  const [addHabit, { loading, error }] = useMutation(ADD_HABIT);
+  const [addHabit, { loading, error }] = useMutation(ADD_HABIT, {
+    refetchQueries: ["getHabits"],
+  });
 
   return (
     <div className="form">
