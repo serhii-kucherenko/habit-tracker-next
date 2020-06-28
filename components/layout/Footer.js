@@ -8,7 +8,7 @@ const Footer = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Created by Sergey Kucherenko
+        Created by <u>Sergey Kucherenko</u>
       </a>
       <style jsx>{`
         footer {

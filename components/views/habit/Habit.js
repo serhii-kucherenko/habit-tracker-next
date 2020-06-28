@@ -1,6 +1,6 @@
 import HabitButton from "./HabitButton";
 
-const colors = ["#718096", "#F56565", "#F6E05E", "#68D391", "#63B3ED"];
+const colors = ["#F56565", "#63B3ED", "#F6E05E", "#68D391", "#718096"];
 
 const Habit = ({ habit, index }) => {
   const dates = getLast5Days();

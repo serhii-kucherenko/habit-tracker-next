@@ -1,6 +1,6 @@
 import { ApolloServer } from "apollo-server-micro";
-import connectDB from "lib/mongoose";
-import { typeDefs, resolvers } from "api/index";
+import connectDB from "../../lib/mongoose";
+import { typeDefs, resolvers } from "../../graphql/index";
 
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
 const server = apolloServer.createHandler({ path: "/api/graphql" });

@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Nav from "components/layout/Nav";
-import Footer from "components/layout/Footer";
+import Nav from "../components/layout/Nav";
+import Footer from "../components/layout/Footer";
 
 const DefaultLayout = ({ children }) => {
   return (

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import DefaultLayout from "layouts/Default";
+import DefaultLayout from "../../layouts/Default";
 
 const Event = () => {
   const router = useRouter();

@@ -1,5 +1,5 @@
 import DefaultLayout from "../layouts/Default";
-import withApollo from "lib/apollo";
+import withApollo from "../lib/apollo";
 import HabitsList from "../components/views/habit/HabitList";
 import HabitForm from "../components/views/habit/HabitForm";
 
@@ -32,6 +32,7 @@ const Home = () => {
         }
 
         .list {
+          width: 100%;
           max-width: 600px;
           margin: 32px auto;
         }
