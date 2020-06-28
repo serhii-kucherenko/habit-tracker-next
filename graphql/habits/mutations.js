@@ -12,6 +12,16 @@ export const habitsMutations = {
       }
     },
 
+    async removeHabit(_, { habitId }) {
+      try {
+        const habit = await Habits.findByIdAndDelete(habitId);
+
+        return habit;
+      } catch (ex) {
+        console.error(ex);
+      }
+    },
+
     async addEvent(_, { habitId, date }) {
       try {
         date.setHours(0, 0, 0, 0);

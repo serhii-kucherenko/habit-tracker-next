@@ -1,23 +1,6 @@
-import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 import Habit from "./Habit";
 
-const GET_HABITS = gql`
-  query getHabits {
-    habits {
-      _id
-      name
-      events {
-        _id
-        date
-      }
-    }
-  }
-`;
-
-const HabitsList = () => {
-  const { data, loading, error } = useQuery(GET_HABITS);
-
+const HabitsList = ({ habits, error, loading }) => {
   if (loading) {
     return <section>Fetching habits... </section>;
   }
@@ -26,11 +9,9 @@ const HabitsList = () => {
     return <section className="error">{error.message}</section>;
   }
 
-  const { habits } = data;
-
   return (
     <section>
-      <h2>My Habits</h2>
+      <h2 className="description">My Habits</h2>
       {habits.map((habit, index) => (
         <Habit key={habit._id} habit={habit} index={index} />
       ))}

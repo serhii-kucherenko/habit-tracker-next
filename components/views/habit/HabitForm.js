@@ -11,8 +11,8 @@ const ADD_HABIT = gql`
   }
 `;
 
-const HabitForm = () => {
-  const [addHabit, { loading, error }] = useMutation(ADD_HABIT, {
+const HabitForm = ({ habits = [] }) => {
+  const [addHabit, { error }] = useMutation(ADD_HABIT, {
     refetchQueries: ["getHabits"],
   });
 
@@ -20,7 +20,14 @@ const HabitForm = () => {
     <div className="form">
       <Form
         onSubmit={({ habit }) => {
-          if (!habit) return alert("Provide a Habit name");
+          if (habits.length >= 10) {
+            return alert(
+              "Can not add more than 10 habits. Try to remove some habits."
+            );
+          }
+          if (!habit) {
+            return alert("Provide a Habit name");
+          }
 
           addHabit({
             variables: {

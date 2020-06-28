@@ -60,7 +60,7 @@ const DefaultLayout = ({ children }) => {
         .title {
           margin: 0;
           line-height: 1.15;
-          font-size: 4rem;
+          font-size: 3rem;
         }
 
         .title,
@@ -70,7 +70,7 @@ const DefaultLayout = ({ children }) => {
 
         .description {
           line-height: 1.5;
-          font-size: 1.5rem;
+          font-size: 2rem;
         }
 
         code {

@@ -18,6 +18,7 @@ input HabitInput {
 
 type Mutation {
   addHabit(habit: HabitInput): Habit
+  removeHabit(habitId: ID): Habit
   addEvent(habitId: ID, date: Date): Habit
   removeEvent(habitId: ID, eventId: ID): Habit
 }

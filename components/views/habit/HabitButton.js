@@ -28,10 +28,14 @@ const REMOVE_EVENT = gql`
 `;
 
 const StateButton = ({ date, habitId, events }) => {
-  const [addEvent] = useMutation(ADD_EVENT, {
-    refetchQueries: ["getHabits"],
-  });
-  const [removeEvent] = useMutation(REMOVE_EVENT, {
+  const [removeEvent, { loading: removeEventLoading }] = useMutation(
+    REMOVE_EVENT,
+    {
+      refetchQueries: ["getHabits"],
+    }
+  );
+
+  const [addEvent, { loading: addEventLoading }] = useMutation(ADD_EVENT, {
     refetchQueries: ["getHabits"],
   });
 
@@ -45,6 +49,7 @@ const StateButton = ({ date, habitId, events }) => {
       {date.getMonth() + 1}/{date.getDate()}
       {foundDate ? (
         <button
+          disabled={removeEventLoading}
           onClick={() =>
             removeEvent({
               variables: {
@@ -58,6 +63,7 @@ const StateButton = ({ date, habitId, events }) => {
         </button>
       ) : (
         <button
+          disabled={addEventLoading}
           onClick={() =>
             addEvent({
               variables: {
