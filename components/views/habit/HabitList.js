@@ -7,15 +7,23 @@ const GET_HABITS = gql`
     habits {
       _id
       name
+      events {
+        _id
+        date
+      }
     }
   }
 `;
 
 const HabitsList = () => {
-  const { data, loading } = useQuery(GET_HABITS);
+  const { data, loading, error } = useQuery(GET_HABITS);
 
   if (loading) {
     return <section>Fetching habits... </section>;
+  }
+
+  if (error) {
+    return <section className="error">{error.message}</section>;
   }
 
   const { habits } = data;

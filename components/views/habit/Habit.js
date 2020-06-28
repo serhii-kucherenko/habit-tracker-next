@@ -10,7 +10,12 @@ const Habit = ({ habit, index }) => {
       <h3>{habit.name}</h3>
       <div className="buttons">
         {dates.map((date) => (
-          <HabitButton key={date.getTime()} date={date} />
+          <HabitButton
+            key={date.getTime()}
+            date={date}
+            habitId={habit._id}
+            events={habit.events}
+          />
         ))}
       </div>
 

@@ -3,6 +3,7 @@ scalar Date
 type Habit {
   _id: ID!
   name: String!
+  events: [Event]
 }
 
 type Event {

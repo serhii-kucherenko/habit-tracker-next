@@ -35,12 +35,6 @@ const HabitForm = () => {
       </Form>
 
       {error && <div className="error">{error.message}</div>}
-
-      <style jsx>{`
-        .error {
-          color: darkred;
-        }
-      `}</style>
     </div>
   );
 };

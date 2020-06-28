@@ -122,8 +122,8 @@ const DefaultLayout = ({ children }) => {
           line-height: 1.5;
         }
 
-        .logo {
-          height: 1em;
+        .error {
+          color: darkred;
         }
 
         @media (max-width: 600px) {

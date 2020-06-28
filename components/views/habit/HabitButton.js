@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/react-hooks";
 
 const ADD_EVENT = gql`
   mutation addEvent($habitId: ID, $date: Date) {
-    addEvent(habidId: $habidId, date: $date) {
+    addEvent(habitId: $habitId, date: $date) {
       _id
       name
       events {
@@ -15,8 +15,8 @@ const ADD_EVENT = gql`
 `;
 
 const REMOVE_EVENT = gql`
-  mutation removeEvent($habitId: ID, $eventID: ID) {
-    removeEvent(habidId: $habidId, eventID: $eventID) {
+  mutation removeEvent($habitId: ID, $eventId: ID) {
+    removeEvent(habitId: $habitId, eventId: $eventId) {
       _id
       name
       events {
@@ -27,14 +27,49 @@ const REMOVE_EVENT = gql`
   }
 `;
 
-const StateButton = ({ date }) => {
-  const [addEvent] = useMutation(ADD_EVENT);
-  const [removeEvent] = useMutation(REMOVE_EVENT);
+const StateButton = ({ date, habitId, events }) => {
+  const [addEvent] = useMutation(ADD_EVENT, {
+    refetchQueries: ["getHabits"],
+  });
+  const [removeEvent] = useMutation(REMOVE_EVENT, {
+    refetchQueries: ["getHabits"],
+  });
+
+  const foundDate = events.find((event) => {
+    const eventDate = new Date(event.date);
+    return eventDate.getDate() === date.getDate();
+  });
 
   return (
     <span>
       {date.getMonth() + 1}/{date.getDate()}
-      {/* <button onClick={() => {}}>{completed ? "X" : "O"}</button> */}
+      {foundDate ? (
+        <button
+          onClick={() =>
+            removeEvent({
+              variables: {
+                habitId,
+                eventId: foundDate._id,
+              },
+            })
+          }
+        >
+          X
+        </button>
+      ) : (
+        <button
+          onClick={() =>
+            addEvent({
+              variables: {
+                habitId,
+                date,
+              },
+            })
+          }
+        >
+          O
+        </button>
+      )}
       <style jsx>{`
         span {
           display: flex;
