@@ -2,7 +2,7 @@
 
 ###### Web app to check main concepts of Next.js (SSR, Dynamic API routes etc.) and deployment specifics with Vercel.
 
-#### [DEMO](http://localhost:3000)
+#### [DEMO](https://habits-tracker-next-cherenkor.kucherenko-web.vercel.app)
 ---
 
 ```bash
